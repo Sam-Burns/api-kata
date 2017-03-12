@@ -1,0 +1,26 @@
+{
+    "require": {
+        "friendsofsymfony/rest-bundle":   "^2.1",
+        "symfony/dependency-injection":   "^3.2",
+        "slim/slim":                      "^3.7",
+        "ultra-lite/container":           "^6.1",
+        "ultra-lite/composite-container": "^1.0",
+        "guzzlehttp/guzzle":              "^6.2",
+        "doctrine/orm":                   "^2.5",
+        "zendframework/zend-diactoros":   "^1.3",
+        "shrikeh/teapot":                 "^2.3"
+    },
+
+    "require-dev": {
+        "phpspec/phpspec": "^3.2",
+        "behat/behat":     "^3.3",
+        "phpunit/phpunit": "^6.0"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "KataApiSdk\\": "src-sdk/",
+            "KataApi\\":    "src-api/"
+        }
+    }
+}
