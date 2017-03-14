@@ -24,7 +24,10 @@ class HttpContext implements Context
      */
     public function setUp()
     {
-        unlink(__DIR__ . '/../../../../../../db/people');
+        $storageFile = __DIR__ . '/../../../../../../db/people';
+        if (file_exists($storageFile)) {
+            unlink($storageFile);
+        }
     }
 
     /**
