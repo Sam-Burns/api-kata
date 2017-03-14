@@ -16,6 +16,9 @@ class InMemoryPeopleStorage implements PeopleStorage
         $this->peopleStored[] = $personToStore;
     }
 
+    /**
+     * @return Person|null
+     */
     public function findByName(Name $name)
     {
         foreach ($this->peopleStored as $person) {

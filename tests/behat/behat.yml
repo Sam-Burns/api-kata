@@ -14,3 +14,8 @@ default:
             paths:    [ %paths.base%/feature_files/ ]
             filters:  { tags: '@servicelevel' }
             contexts: [ \KataApi\Behat\RememberingPeople\ServiceContext ]
+
+        httplevel:
+            paths:    [ %paths.base%/feature_files/ ]
+            filters:  { tags: '@httplevel' }
+            contexts: [ \KataApi\Behat\RememberingPeople\HttpContext ]

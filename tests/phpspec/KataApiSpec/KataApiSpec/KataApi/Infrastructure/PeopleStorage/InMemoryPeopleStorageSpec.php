@@ -12,11 +12,6 @@ use PhpSpec\ObjectBehavior;
  */
 class InMemoryPeopleStorageSpec extends ObjectBehavior
 {
-    function it_is_initializable()
-    {
-        $this->shouldHaveType(InMemoryPeopleStorage::class);
-    }
-
     function it_can_find_people_by_name(Name $nameToSearchFor, Person $person1, Person $person2)
     {
         $person1->isCalled($nameToSearchFor)->willReturn(false);

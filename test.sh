@@ -18,6 +18,14 @@ BEHAT_SERVICELEVEL_RETURN_CODE=$?
 ./vendor/bin/behat -c tests/behat/behat.yml --suite applicationlevel;
 BEHAT_APPLICATIONLEVEL_RETURN_CODE=$?
 
+# Start webserver, run Behat tests, stop webserver
+pushd public/
+php -S localhost:8001 &> /dev/null &
+WEBSERVER_PROCESS_ID=$!;
+popd
+./vendor/bin/behat -c tests/behat/behat.yml --suite httplevel;
+BEHAT_HTTPLEVEL_RETURN_CODE=$?
+kill -9 $WEBSERVER_PROCESS_ID;
 
 # Print results so you don't have to scroll
 echo;
@@ -30,9 +38,12 @@ echo $PHPSPEC_RETURN_CODE;
 echo -n 'Behat service-level return code:     ';
 echo $BEHAT_SERVICELEVEL_RETURN_CODE;
 
+echo -n 'Behat HTTP-level return code:        ';
+echo $BEHAT_HTTPLEVEL_RETURN_CODE;
+
 echo -n 'Behat application-level return code: ';
 echo $BEHAT_APPLICATIONLEVEL_RETURN_CODE;
 
 # Work out an exit code, and exit
-OVERALL_EXIT_CODE=$((PHPUNIT_RETURN_CODE + PHPSPEC_RETURN_CODE + BEHAT_SERVICELEVEL_RETURN_CODE + BEHAT_WEBSERVERL_RETURN_CODE))
+OVERALL_EXIT_CODE=$((PHPUNIT_RETURN_CODE + PHPSPEC_RETURN_CODE + BEHAT_SERVICELEVEL_RETURN_CODE + BEHAT_HTTPLEVEL_RETURN_CODE))
 exit $OVERALL_EXIT_CODE;
