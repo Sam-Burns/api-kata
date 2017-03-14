@@ -11,7 +11,7 @@ Feature: Remembering people
         And 'Hash' is a 'Dev'
         And 'Sam' is a 'Dev'
         And 'Tahir' is a 'Dev'
-        And 'Zaid' is a 'Dev'
+        And 'Ziad' is a 'Dev'
 
     @servicelevel @applicationlevel @httplevel
     Scenario: Getting everyone from the DB
